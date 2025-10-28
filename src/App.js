@@ -6,13 +6,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleLogin = (userData) => {
-    // В реальном приложении здесь был бы API запрос
     console.log('Вход выполнен:', userData);
     setCurrentUser(userData);
   };
 
   const handleRegister = (userData) => {
-    // В реальном приложении здесь был бы API запрос
     console.log('Регистрация:', userData);
     setCurrentUser(userData);
   };
@@ -25,7 +23,8 @@ function App() {
     <div className="App">
       {currentUser ? (
         <div className="welcome-container">
-          <h1>Добро пожаловать, {currentUser.email}!</h1>
+          <h1>Добро пожаловать, {currentUser.firstName}!</h1>
+          <p>Роль: {currentUser.role === 'psychologist' ? 'Психолог' : 'Клиент'}</p>
           <button onClick={handleLogout} className="logout-btn">
             Выйти
           </button>
