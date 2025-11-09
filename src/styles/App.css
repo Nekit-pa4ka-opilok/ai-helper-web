@@ -558,6 +558,15 @@ body {
   border: 1px solid #e2e8f0;
 }
 
+.psychologist-price {
+  margin-bottom: 15px;
+}
+
+.psychologist-price strong {
+  color: #2d3748;
+  font-size: 14px;
+}
+
 .psychologist-actions {
   display: flex;
   gap: 10px;
@@ -598,6 +607,301 @@ body {
   color: #718096;
   font-size: 14px;
   padding: 40px;
+}
+
+/* Стили для профиля клиента */
+.profile-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.profile-left,
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-card,
+.daily-report-card,
+.psychologist-card,
+.no-psychologist-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.profile-header {
+  margin-bottom: 25px;
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f4ff;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4f6df5;
+}
+
+.profile-info {
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row .label {
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+}
+
+.info-row .value {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group-profile label {
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+  min-width: 80px;
+}
+
+.edit-input {
+  padding: 6px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 180px;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #4f6df5;
+}
+
+.edit-btn {
+  background-color: #4f6df5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.edit-btn:hover {
+  background-color: #3a56d4;
+}
+
+.edit-btn.save {
+  background-color: #10b981;
+}
+
+.edit-btn.save:hover {
+  background-color: #059669;
+}
+
+.reports-section h3 {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-item {
+  padding: 10px 15px;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #4a5568;
+  transition: all 0.2s ease;
+}
+
+.report-item:hover {
+  background: #f0f4ff;
+  border-color: #4f6df5;
+}
+
+/* Ежедневный отчет */
+.daily-report-card h3 {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.timer {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4f6df5;
+  text-align: center;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.image-upload-section {
+  text-align: center;
+}
+
+.file-input-profile {
+  display: none;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #f8f9fa;
+  border: 2px dashed #d0d0d0;
+  border-radius: 8px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  width: 100%;
+}
+
+.upload-label:hover {
+  border-color: #4f6df5;
+  color: #4f6df5;
+  background: #f0f4ff;
+}
+
+/* Карточка психолога */
+.psychologist-card h3,
+.no-psychologist-card h3 {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.psychologist-info {
+  margin-bottom: 20px;
+}
+
+.psychologist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-btn-profile {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.refuse-btn {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.refuse-btn:hover {
+  background-color: #fee2e2;
+}
+
+.chat-btn {
+  background-color: #4f6df5;
+  color: white;
+}
+
+.chat-btn:hover {
+  background-color: #3a56d4;
+}
+
+.no-psychologist-card {
+  text-align: center;
+}
+
+.no-psychologist-card p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.no-psychologist-card .action-btn-profile {
+  background-color: #4f6df5;
+  color: white;
+}
+
+.no-psychologist-card .action-btn-profile:hover {
+  background-color: #3a56d4;
+}
+
+/* Адаптив для профиля */
+@media (max-width: 968px) {
+  .profile-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .profile-left,
+  .profile-right {
+    gap: 15px;
+  }
+  
+  .profile-card,
+  .daily-report-card,
+  .psychologist-card,
+  .no-psychologist-card {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -684,5 +988,30 @@ body {
 
   .psychologist-card {
     padding: 15px;
+  }
+
+  /* Адаптив для профиля */
+  .profile-content {
+    padding: 20px 15px;
+  }
+  
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .form-group-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .edit-input {
+    width: 100%;
+  }
+  
+  .timer {
+    font-size: 28px;
   }
 }

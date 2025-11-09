@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import MainPage from './components/MainPage';
+import ClientProfile from './components/ClientProfile';
+import Header from './components/Header';
 import './styles/App.css';
 
 function App() {
@@ -27,9 +29,35 @@ function App() {
     setCurrentPage('main');
   };
 
-  // Если пользователь авторизован, показываем главную страницу
-  if (isAuthenticated && currentPage === 'main') {
-    return <MainPage onNavigate={handleNavigation} />;
+  // Рендерим соответствующую страницу в зависимости от авторизации
+  if (isAuthenticated) {
+    switch (currentPage) {
+      case 'main':
+        return <MainPage onNavigate={handleNavigation} />;
+      case 'profile':
+        return <ClientProfile onNavigate={handleNavigation} />;
+      case 'chat':
+        return (
+          <div className="main-app">
+            <Header onNavigate={handleNavigation} />
+            <div className="main-content">
+              <div className="hero-section">
+                <h1>Чат с психологом</h1>
+                <p>Функция чата будет доступна после подключения бэкенда</p>
+                <button 
+                  className="submit-btn"
+                  onClick={() => handleNavigation('main')}
+                  style={{marginTop: '20px'}}
+                >
+                  Вернуться на главную
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      default:
+        return <MainPage onNavigate={handleNavigation} />;
+    }
   }
 
   // Страницы авторизации

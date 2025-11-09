@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Header = ({ currentPage, onNavigate }) => {
+const Header = ({ onNavigate }) => {
   const handleLogout = () => {
     if (window.confirm('Вы уверены, что хотите выйти?')) {
       console.log('Выход из аккаунта');
-      // Здесь будет логика выхода
       onNavigate('login');
     }
   };
@@ -21,7 +20,7 @@ const Header = ({ currentPage, onNavigate }) => {
             className="nav-item"
             onClick={() => onNavigate('chat')}
           >
-            💬 Переход в чат
+            💬 Чат
           </button>
           
           <button 
