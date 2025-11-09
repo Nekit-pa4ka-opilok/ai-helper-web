@@ -90,7 +90,7 @@ const RegisterForm = ({ onRegisterSuccess, onNavigate }) => {
         ...formData,
         licenseFile: licenseFile ? licenseFile.name : null
       });
-      onRegisterSuccess();
+      onRegisterSuccess(formData.userType);
     }
   };
 

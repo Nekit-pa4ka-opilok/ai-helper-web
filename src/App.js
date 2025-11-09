@@ -3,12 +3,14 @@ import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import MainPage from './components/MainPage';
 import ClientProfile from './components/ClientProfile';
+import PsychologistProfile from './components/PsychologistProfile';
 import Header from './components/Header';
 import './styles/App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('login');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userType, setUserType] = useState('client'); // 'client' или 'psychologist'
 
   const handleNavigation = (page) => {
     setCurrentPage(page);
@@ -19,30 +21,37 @@ function App() {
     }
   };
 
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = (type = 'client') => {
     setIsAuthenticated(true);
+    setUserType(type);
     setCurrentPage('main');
   };
 
-  const handleRegisterSuccess = () => {
+  const handleRegisterSuccess = (type = 'client') => {
     setIsAuthenticated(true);
+    setUserType(type);
     setCurrentPage('main');
   };
 
-  // Рендерим соответствующую страницу в зависимости от авторизации
+  // Рендерим соответствующую страницу в зависимости от авторизации и типа пользователя
   if (isAuthenticated) {
     switch (currentPage) {
       case 'main':
         return <MainPage onNavigate={handleNavigation} />;
       case 'profile':
-        return <ClientProfile onNavigate={handleNavigation} />;
+        // Показываем профиль в зависимости от типа пользователя
+        if (userType === 'psychologist') {
+          return <PsychologistProfile onNavigate={handleNavigation} />;
+        } else {
+          return <ClientProfile onNavigate={handleNavigation} />;
+        }
       case 'chat':
         return (
           <div className="main-app">
             <Header onNavigate={handleNavigation} />
             <div className="main-content">
               <div className="hero-section">
-                <h1>Чат с психологом</h1>
+                <h1>Чат с {userType === 'psychologist' ? 'клиентом' : 'психологом'}</h1>
                 <p>Функция чата будет доступна после подключения бэкенда</p>
                 <button 
                   className="submit-btn"

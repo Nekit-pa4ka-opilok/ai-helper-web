@@ -47,7 +47,7 @@ const LoginForm = ({ onLoginSuccess, onNavigate }) => {
     
     if (validateForm()) {
       console.log('Данные входа:', formData);
-      onLoginSuccess();
+      onLoginSuccess(formData.userType);
     }
   };
 
@@ -107,7 +107,7 @@ const LoginForm = ({ onLoginSuccess, onNavigate }) => {
       </div>
 
       <button type="submit" className="submit-btn">
-        Войти
+        Войти как {formData.userType === 'client' ? 'клиент' : 'психолог'}
       </button>
 
       <div className="form-footer">

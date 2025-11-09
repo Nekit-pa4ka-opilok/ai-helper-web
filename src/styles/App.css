@@ -1015,3 +1015,264 @@ body {
     font-size: 28px;
   }
 }
+/* Существующие стили остаются без изменений */
+
+/* Стили для профиля психолога */
+.psychologist-photo-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.photo-upload {
+  display: inline-block;
+}
+
+.psychologist-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4f6df5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.psychologist-photo:hover {
+  opacity: 0.8;
+}
+
+.photo-placeholder {
+  width: 150px;
+  height: 150px;
+  border: 2px dashed #d0d0d0;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.photo-placeholder:hover {
+  border-color: #4f6df5;
+  color: #4f6df5;
+  background: #f0f4ff;
+}
+
+.psychologist-description-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.psychologist-description-section h3 {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.description-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.description-textarea:focus {
+  outline: none;
+  border-color: #4f6df5;
+  box-shadow: 0 0 0 2px rgba(79, 109, 245, 0.1);
+}
+
+.description-text {
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* Стили для списка клиентов */
+.clients-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+
+.clients-card h3 {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.client-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.client-item:hover {
+  background: #f0f4ff;
+  border-color: #4f6df5;
+}
+
+.client-status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.client-info {
+  flex: 1;
+}
+
+.client-name {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.client-last-session {
+  color: #718096;
+  font-size: 12px;
+}
+
+.client-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.client-action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.client-action-btn.chat-btn {
+  background-color: #4f6df5;
+  color: white;
+}
+
+.client-action-btn.chat-btn:hover {
+  background-color: #3a56d4;
+}
+
+.client-action-btn.remove-btn {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.client-action-btn.remove-btn:hover {
+  background-color: #fee2e2;
+}
+
+.no-clients {
+  text-align: center;
+  padding: 40px 20px;
+  color: #718096;
+}
+
+.no-clients p {
+  font-size: 14px;
+}
+
+/* Статистика клиентов */
+.clients-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Адаптив для профиля психолога */
+@media (max-width: 968px) {
+  .clients-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .client-item {
+    flex-wrap: wrap;
+  }
+  
+  .client-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .psychologist-photo,
+  .photo-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .client-item {
+    padding: 10px;
+  }
+  
+  .client-action-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
