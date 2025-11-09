@@ -5,171 +5,684 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* Стили для страниц авторизации */
+.app {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.App {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.auth-container {
-  width: 100%;
-  max-width: 400px;
   padding: 20px;
 }
 
-.auth-card {
+.container {
+  width: 100%;
+  max-width: 500px;
   background: white;
-  border-radius: 12px;
-  padding: 40px 30px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.auth-header {
+.header {
+  background-color: #4f6df5;
+  color: white;
+  padding: 25px;
   text-align: center;
-  margin-bottom: 30px;
 }
 
-.auth-header h2 {
-  color: #333;
-  margin-bottom: 10px;
-  font-size: 28px;
+.header h1 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-.auth-header p {
-  color: #666;
+.header p {
   font-size: 14px;
+  opacity: 0.9;
 }
 
-.switch-btn {
-  background: none;
+.form-container {
+  padding: 25px;
+}
+
+.form-tabs {
+  display: flex;
+  margin-bottom: 25px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
   border: none;
-  color: #667eea;
+  background: transparent;
+  border-radius: 6px;
   cursor: pointer;
-  text-decoration: underline;
+  font-weight: 500;
+  transition: all 0.2s ease;
   font-size: 14px;
 }
 
-.switch-btn:hover {
-  color: #764ba2;
+.tab.active {
+  background: white;
+  box-shadow: 0 1px 4px rgba(58, 86, 212, 0.2);
+  color: #3a56d4;
 }
 
-.auth-form {
+.form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+/* Стили для UserTypeSelector */
+.user-type-selector {
+  margin-bottom: 20px;
 }
+
+.selector-label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+}
+
+.user-type-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-type-card {
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.user-type-card:hover:not(.disabled) {
+  border-color: #cbd5e0;
+  background: #f8f9fa;
+}
+
+.user-type-card.selected {
+  border-color: #4f6df5;
+  background: #f0f4ff;
+}
+
+.user-type-card.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-icon {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.user-type-card.selected .option-icon {
+  background: #e6f0ff;
+}
+
+.option-text {
+  flex: 1;
+}
+
+.option-label {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.option-description {
+  color: #718096;
+  font-size: 12px;
+}
+
+.radio-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cbd5e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.user-type-card.selected .radio-circle {
+  border-color: #4f6df5;
+  background: #4f6df5;
+}
+
+.radio-dot {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* Конец стилей для UserTypeSelector */
 
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .form-group label {
-  margin-bottom: 5px;
-  color: #333;
   font-weight: 500;
-  font-size: 14px;
+  color: #333;
+  font-size: 13px;
 }
 
 .form-group input {
-  padding: 12px 15px;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
   font-size: 14px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #4f6df5;
+  box-shadow: 0 0 0 2px rgba(79, 109, 245, 0.1);
 }
 
 .form-group input.error {
   border-color: #e74c3c;
 }
 
-.error-message {
+.error-text {
   color: #e74c3c;
-  font-size: 12px;
-  margin-top: 5px;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.file-upload {
+  position: relative;
+}
+
+.file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-label {
+  padding: 10px 12px;
+  border: 1px dashed #d0d0d0;
+  border-radius: 6px;
+  text-align: center;
+  color: #666;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.file-upload-label:hover {
+  border-color: #4f6df5;
+  color: #4f6df5;
+}
+
+.file-hint {
+  color: #666;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.remember-me input {
+  width: 14px;
+  height: 14px;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #4f6df5;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.forgot-password:hover {
+  color: #3a56d4;
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: #4f6df5;
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
+  transition: all 0.2s ease;
+  margin-top: 8px;
 }
 
 .submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  background-color: #3a56d4;
 }
 
-.welcome-container {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
+.form-footer {
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #e0e0e0;
 }
 
-.welcome-container h1 {
-  color: #333;
-  margin-bottom: 20px;
+.form-footer p {
+  color: #666;
+  font-size: 13px;
 }
 
-.logout-btn {
-  background: #e74c3c;
+.form-footer a {
+  color: #4f6df5;
+  text-decoration: none;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Стили для главной страницы */
+.main-app {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+/* Хедер */
+.main-header {
+  background-color: #4f6df5;
   color: white;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 70px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-item {
+  background: none;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  color: white;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.logout-btn:hover {
-  background: #c0392b;
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Адаптивность */
-@media (max-width: 480px) {
-  .auth-container {
-    padding: 15px;
+.nav-item.logout {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.logout:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Основной контент */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Баннер с описанием */
+.hero-section {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.hero-section h1 {
+  color: #2d3748;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero-description {
+  color: #4a5568;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Поиск психологов */
+.psychologists-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.section-header h2 {
+  color: #2d3748;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.search-box {
+  position: relative;
+  width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4f6df5;
+  box-shadow: 0 0 0 2px rgba(79, 109, 245, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+}
+
+/* Сетка психологов */
+.psychologists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.psychologist-card {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.psychologist-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: #4f6df5;
+}
+
+.psychologist-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.psychologist-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4f6df5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.psychologist-info h3 {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.psychologist-specialty {
+  color: #4f6df5;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.psychologist-experience {
+  color: #718096;
+  font-size: 13px;
+}
+
+.psychologist-description {
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.psychologist-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.feature-tag {
+  background: white;
+  color: #4a5568;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.psychologist-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #4f6df5;
+  border-radius: 6px;
+  background: white;
+  color: #4f6df5;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.action-btn.primary {
+  background: #4f6df5;
+  color: white;
+}
+
+.action-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Сообщение о загрузке */
+.loading-message {
+  text-align: center;
+  color: #718096;
+  font-size: 14px;
+  padding: 40px;
+}
+
+.no-results {
+  text-align: center;
+  color: #718096;
+  font-size: 14px;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 10px;
+    border-radius: 8px;
   }
   
-  .auth-card {
-    padding: 30px 20px;
+  .header {
+    padding: 20px;
   }
   
-  .form-row {
-    grid-template-columns: 1fr;
+  .header h1 {
+    font-size: 20px;
+  }
+  
+  .form-container {
+    padding: 20px;
+  }
+  
+  .user-type-card {
+    padding: 12px;
+  }
+  
+  .card-header {
+    gap: 10px;
+  }
+  
+  .option-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  /* Адаптив для главной страницы */
+  .header-content {
+    padding: 0 15px;
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .nav-menu {
     gap: 15px;
+  }
+
+  .nav-item {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .main-content {
+    padding: 20px 15px;
+  }
+
+  .hero-section {
+    padding: 25px;
+    margin-bottom: 25px;
+  }
+
+  .hero-section h1 {
+    font-size: 24px;
+  }
+
+  .psychologists-section {
+    padding: 20px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .psychologists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .psychologist-card {
+    padding: 15px;
   }
 }

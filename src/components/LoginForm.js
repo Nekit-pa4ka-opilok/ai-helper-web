@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
+import UserTypeSelector from './UserTypeSelector';
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = ({ onLoginSuccess, onNavigate }) => {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
+    userType: 'client'
   });
+  
   const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleUserTypeChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      userType: e.target.value
+    }));
+  };
 
   const validateForm = () => {
     const newErrors = {};
@@ -24,63 +42,86 @@ const LoginForm = ({ onLogin }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Очищаем ошибку при вводе
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     
     if (validateForm()) {
-      onLogin(formData);
+      console.log('Данные входа:', formData);
+      onLoginSuccess();
     }
   };
 
+  const handleForgotPassword = () => {
+    alert('Функция восстановления пароля временно недоступна');
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
-      <div className="form-group">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className={errors.email ? 'error' : ''}
-          placeholder="Введите ваш email"
-        />
-        {errors.email && <span className="error-message">{errors.email}</span>}
+    <form className="form" onSubmit={handleSubmit}>
+      <UserTypeSelector 
+        userType={formData.userType}
+        onUserTypeChange={handleUserTypeChange}
+      />
+
+      <div className="form-row">
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className={errors.email ? 'error' : ''}
+            placeholder="Введите ваш email"
+          />
+          {errors.email && <span className="error-text">{errors.email}</span>}
+        </div>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="password">Пароль</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          className={errors.password ? 'error' : ''}
-          placeholder="Введите ваш пароль"
-        />
-        {errors.password && <span className="error-message">{errors.password}</span>}
+      <div className="form-row">
+        <div className="form-group">
+          <label>Пароль</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            className={errors.password ? 'error' : ''}
+            placeholder="Введите ваш пароль"
+          />
+          {errors.password && <span className="error-text">{errors.password}</span>}
+        </div>
+      </div>
+
+      <div className="form-options">
+        <label className="remember-me">
+          <input type="checkbox" />
+          <span>Запомнить меня</span>
+        </label>
+        <button 
+          type="button" 
+          className="forgot-password"
+          onClick={handleForgotPassword}
+        >
+          Забыли пароль?
+        </button>
       </div>
 
       <button type="submit" className="submit-btn">
         Войти
       </button>
+
+      <div className="form-footer">
+        <p>Впервые у нас? 
+          <button 
+            type="button" 
+            className="forgot-password"
+            onClick={() => onNavigate('register')}
+            style={{marginLeft: '5px'}}
+          >
+            Зарегистрируйтесь
+          </button>
+        </p>
+      </div>
     </form>
   );
 };
