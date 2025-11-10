@@ -58,8 +58,8 @@ const ClientProfile = ({ onNavigate }) => {
   };
 
   const handleStartChat = () => {
-    onNavigate('chat');
-  };
+  onNavigate('chat');
+};
 
   return (
     <div className="main-app">

@@ -59,9 +59,9 @@ const PsychologistProfile = ({ onNavigate }) => {
   };
 
   const handleStartChat = (clientId) => {
-    console.log('Начат чат с клиентом:', clientId);
-    onNavigate('chat');
-  };
+  console.log('Начат чат с клиентом:', clientId);
+  onNavigate('chat');
+};
 
   const handleRemoveClient = (clientId, clientName) => {
     if (window.confirm(`Вы уверены, что хотите удалить клиента ${clientName} из списка?`)) {

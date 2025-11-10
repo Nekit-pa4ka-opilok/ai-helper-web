@@ -4,6 +4,7 @@ import RegisterForm from './components/RegisterForm';
 import MainPage from './components/MainPage';
 import ClientProfile from './components/ClientProfile';
 import PsychologistProfile from './components/PsychologistProfile';
+import ChatPage from './components/ChatPage';
 import Header from './components/Header';
 import './styles/App.css';
 
@@ -46,24 +47,7 @@ function App() {
           return <ClientProfile onNavigate={handleNavigation} />;
         }
       case 'chat':
-        return (
-          <div className="main-app">
-            <Header onNavigate={handleNavigation} />
-            <div className="main-content">
-              <div className="hero-section">
-                <h1>Чат с {userType === 'psychologist' ? 'клиентом' : 'психологом'}</h1>
-                <p>Функция чата будет доступна после подключения бэкенда</p>
-                <button 
-                  className="submit-btn"
-                  onClick={() => handleNavigation('main')}
-                  style={{marginTop: '20px'}}
-                >
-                  Вернуться на главную
-                </button>
-              </div>
-            </div>
-          </div>
-        );
+        return <ChatPage onNavigate={handleNavigation} userType={userType} />;
       default:
         return <MainPage onNavigate={handleNavigation} />;
     }
