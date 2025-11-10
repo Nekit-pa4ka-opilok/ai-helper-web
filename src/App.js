@@ -5,20 +5,26 @@ import MainPage from './components/MainPage';
 import ClientProfile from './components/ClientProfile';
 import PsychologistProfile from './components/PsychologistProfile';
 import ChatPage from './components/ChatPage';
+import PsychologistDetail from './components/PsychologistDetail';
 import Header from './components/Header';
 import './styles/App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('login');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userType, setUserType] = useState('client'); // 'client' или 'psychologist'
+  const [userType, setUserType] = useState('client');
+  const [selectedPsychologist, setSelectedPsychologist] = useState(null);
 
-  const handleNavigation = (page) => {
+  const handleNavigation = (page, psychologistId = null) => {
     setCurrentPage(page);
     if (page === 'login' || page === 'register') {
       setIsAuthenticated(false);
     } else {
       setIsAuthenticated(true);
+    }
+    
+    if (psychologistId) {
+      setSelectedPsychologist(psychologistId);
     }
   };
 
@@ -34,26 +40,23 @@ function App() {
     setCurrentPage('main');
   };
 
-  // Рендерим соответствующую страницу в зависимости от авторизации и типа пользователя
   if (isAuthenticated) {
     switch (currentPage) {
       case 'main':
         return <MainPage onNavigate={handleNavigation} />;
       case 'profile':
-        // Показываем профиль в зависимости от типа пользователя
-        if (userType === 'psychologist') {
-          return <PsychologistProfile onNavigate={handleNavigation} />;
-        } else {
-          return <ClientProfile onNavigate={handleNavigation} />;
-        }
+        return userType === 'psychologist' 
+          ? <PsychologistProfile onNavigate={handleNavigation} /> 
+          : <ClientProfile onNavigate={handleNavigation} />;
       case 'chat':
         return <ChatPage onNavigate={handleNavigation} userType={userType} />;
+      case 'psychologist-detail':
+        return <PsychologistDetail onNavigate={handleNavigation} psychologistId={selectedPsychologist} />;
       default:
         return <MainPage onNavigate={handleNavigation} />;
     }
   }
 
-  // Страницы авторизации
   return (
     <div className="app">
       <div className="container">
