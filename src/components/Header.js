@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/Ellipse29.svg';
 
 const Header = ({ onNavigate }) => {
   const handleLogout = () => {
@@ -11,8 +12,9 @@ const Header = ({ onNavigate }) => {
   return (
     <header className="main-header">
       <div className="header-content">
-        <div className="logo">
-          Психологический Центр "Гармония"
+        <div className="logo-section">
+          <img src={logo} alt="Логотип Гармония" className="logo-image" />
+          <span className="logo-text">Гармония</span>
         </div>
         
         <nav className="nav-menu">
@@ -20,28 +22,28 @@ const Header = ({ onNavigate }) => {
             className="nav-item"
             onClick={() => onNavigate('chat')}
           >
-            💬 Чат
+            Чат
           </button>
           
           <button 
             className="nav-item"
             onClick={() => onNavigate('main')}
           >
-            🏠 Главная
+            Главная
           </button>
           
           <button 
             className="nav-item"
             onClick={() => onNavigate('profile')}
           >
-            👤 Профиль
+            Профиль
           </button>
           
           <button 
             className="nav-item logout"
             onClick={handleLogout}
           >
-            🚪 Выход
+            Выход
           </button>
         </nav>
       </div>
